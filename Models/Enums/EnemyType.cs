@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Models.Enums
 {
-    public enum EnemyTypes
+    public enum EnemyType
     {
         UsualWalking = 0,
         TreeLike = 1,

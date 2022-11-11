@@ -1,9 +1,8 @@
 ﻿using Models.Enums;
-namespace Models.Assets
+namespace Models.Entities.LivingEntities
 {
-    public class BaseLivingEntity
+    public class BaseLiving
     {
-        public int Id { get; set; }
         public int HealthPoints { get; set; }
         public LivingEntityType Type { get; set; }
         public float Speed { get; set; } 
