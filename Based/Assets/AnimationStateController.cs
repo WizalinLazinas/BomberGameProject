@@ -18,6 +18,7 @@ public class AnimationStateController : MonoBehaviour
     {
         if (_characterController.velocity != Vector3.zero)
         {
+            Debug.Log("IsWAlking+Plant bomb");
             animator.SetBool("isWalking", true);
             BombPlanting();
         }
