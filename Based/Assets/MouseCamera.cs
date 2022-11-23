@@ -6,7 +6,7 @@ public class MouseCamera : MonoBehaviour
 {
     public GameObject player;
     public Vector2 turn;
-    public float sensivity = .009f;
+    public float sensivity = 0.5f;
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;

@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bomb : MonoBehaviour
+public class Bomb : Damager
 {
     public float Delay = 3f;
+    public float Radius = 5f;
     public GameObject ExplosionEffect;
     float Countdown;
     bool HasExploded;
@@ -27,15 +28,15 @@ public class Bomb : MonoBehaviour
     void Explode()
     {
         //Allah akabar!
-        Debug.Log("BOOM!");
         var delayedExplosion = Instantiate(ExplosionEffect, transform.position, transform.rotation);
-        //Physics.OverlapSphere()
-        //Show explode effect
-
-        //Get nearby objects (destroyeble, entities...)
-            // Add force to objects
-            // Do damage!
-            // Remove entities if needed
+        var colliders = Physics.OverlapSphere(transform.position, Radius);
+        foreach (var nearbyObj in colliders)
+        {
+            if (nearbyObj.TryGetComponent(out Damageable damageable))
+            {
+                Damage(damageable);
+            }
+        }
         // Remove bomb parts
         Destroy(gameObject);
         Destroy(delayedExplosion, 2);

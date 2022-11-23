@@ -16,7 +16,8 @@ public class BombPlanting : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Instantiate(Bomb, transform.position, Quaternion.identity);
+            var position = new Vector3(transform.position.x, 1, transform.position.z);
+            Instantiate(Bomb, position, Quaternion.identity);
             Debug.Log("Bomb has been planted!");
         }
     }
