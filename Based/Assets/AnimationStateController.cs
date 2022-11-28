@@ -5,6 +5,7 @@ using UnityEngine;
 public class AnimationStateController : MonoBehaviour
 {
     Animator animator;
+    private float _bombPlantingDelay = 0.3f;
     private CharacterController _characterController;
     // Start is called before the first frame update
     void Start()
@@ -30,13 +31,13 @@ public class AnimationStateController : MonoBehaviour
     }
     void BombPlanting()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            animator.SetBool("isPlantingBomb", true);
-        }
-        if(Input.GetKeyUp(KeyCode.Space))
-        {
-            animator.SetBool("isPlantingBomb", false);
-        }
+        if (!Input.GetKeyDown(KeyCode.Space)) return;
+        animator.SetTrigger("isPlantingBomb");
+        Invoke("BombPlanted", _bombPlantingDelay);
     }
+    private void BombPlanted()
+    {
+        animator.ResetTrigger("isPlantingBomb");
+    }
+
 }
