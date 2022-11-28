@@ -17,21 +17,12 @@ public class AnimationStateController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_characterController.velocity != Vector3.zero)
-        {
-            animator.SetBool("isWalking", true);
-            BombPlanting();
-        }
-        else
-        {
-            animator.SetBool("isWalking", false);
-            BombPlanting();
-        }
-
+        animator.SetBool("isWalking", _characterController.velocity != Vector3.zero);
+        if (!Input.GetKeyDown(KeyCode.Space)) return;
+        BombPlanting();
     }
     void BombPlanting()
     {
-        if (!Input.GetKeyDown(KeyCode.Space)) return;
         animator.SetTrigger("isPlantingBomb");
         Invoke("BombPlanted", _bombPlantingDelay);
     }
